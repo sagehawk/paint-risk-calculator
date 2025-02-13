@@ -1,0 +1,44 @@
+{
+  "paints": [
+    {
+      "id": 1,
+      "make": "BMW",
+      "model": "3 Series",
+      "year": "2022",
+      "paintRisk": 7,
+      "notes": "Thinner clear coat, prone to chipping.",
+      "sizeCategory": "Sedan",
+      "desiredLook": "Sporty and Sleek"
+    },
+    {
+      "id": 2,
+      "make": "Lexus",
+      "model": "RX",
+      "year": "2023",
+      "paintRisk": 4,
+      "notes": "Less resilient clear coat.",
+      "sizeCategory": "SUV",
+      "desiredLook": "Luxurious and Family-Oriented"
+    },
+    {
+      "id": 3,
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": "2024",
+      "paintRisk": 6,
+      "notes": "Softer paint, prone to swirl marks.",
+      "sizeCategory": "Sedan",
+      "desiredLook": "Modern and Minimalist"
+    },
+    {
+      "id": 4,
+      "make": "Land Rover",
+      "model": "Range Rover",
+      "year": "2024",
+      "paintRisk": 3,
+      "notes": "Good paint quality.",
+      "sizeCategory": "SUV",
+      "desiredLook": "Rugged and Premium"
+    }
+  ]
+}

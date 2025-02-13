@@ -1,0 +1,1364 @@
+{
+  "paints": [
+    {
+      "id": 1,
+      "make": "BMW",
+      "model": "3 Series",
+      "year": "2020",
+      "paintRisk": 5,
+      "notes": "The 2020 3 series features a clear coat with some resistance to chipping and is known to have consistent factory application."
+    },
+    {
+      "id": 2,
+      "make": "BMW",
+      "model": "3 Series",
+      "year": "2021",
+      "paintRisk": 5,
+      "notes": "The 2021 3 series features a clear coat with some resistance to chipping and is known to have consistent factory application."
+    },
+    {
+      "id": 3,
+      "make": "BMW",
+      "model": "3 Series",
+      "year": "2022",
+      "paintRisk": 7,
+      "notes": "The 2022 3 series features a relatively thinner clear coat, which is known to be slightly more prone to chipping."
+    },
+    {
+      "id": 4,
+      "make": "BMW",
+      "model": "3 Series",
+      "year": "2023",
+      "paintRisk": 7,
+      "notes": "The 2023 3 series features a relatively thinner clear coat, which is known to be slightly more prone to chipping."
+    },
+    {
+      "id": 5,
+      "make": "BMW",
+      "model": "3 Series",
+      "year": "2024",
+      "paintRisk": 6,
+      "notes": "The 2024 3 series features a clear coat that is known to be less prone to chipping."
+    },
+    {
+      "id": 6,
+      "make": "BMW",
+      "model": "5 Series",
+      "year": "2020",
+      "paintRisk": 3,
+      "notes": "The 2020 5 Series typically features a resilient clear coat."
+    },
+    {
+      "id": 7,
+      "make": "BMW",
+      "model": "5 Series",
+      "year": "2021",
+      "paintRisk": 3,
+      "notes": "The 2021 5 Series typically features a resilient clear coat."
+    },
+    {
+      "id": 8,
+      "make": "BMW",
+      "model": "5 Series",
+      "year": "2022",
+      "paintRisk": 6,
+      "notes": "The 2022 5 Series features a less resilient clear coat compared to older models."
+    },
+    {
+      "id": 9,
+      "make": "BMW",
+      "model": "5 Series",
+      "year": "2023",
+      "paintRisk": 6,
+      "notes": "The 2023 5 Series features a less resilient clear coat compared to older models."
+    },
+    {
+      "id": 10,
+      "make": "BMW",
+      "model": "5 Series",
+      "year": "2024",
+      "paintRisk": 4,
+      "notes": "The 2024 5 Series typically features a resilient clear coat."
+    },
+    {
+      "id": 11,
+      "make": "BMW",
+      "model": "7 Series",
+      "year": "2020",
+      "paintRisk": 1,
+      "notes": "The 2020 7 series features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 12,
+      "make": "BMW",
+      "model": "7 Series",
+      "year": "2021",
+      "paintRisk": 1,
+      "notes": "The 2021 7 series features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 13,
+      "make": "BMW",
+      "model": "7 Series",
+      "year": "2022",
+      "paintRisk": 2,
+      "notes": "The 2022 7 series features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 14,
+      "make": "BMW",
+      "model": "7 Series",
+      "year": "2023",
+      "paintRisk": 3,
+      "notes": "The 2023 7 series features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 15,
+      "make": "BMW",
+      "model": "7 Series",
+      "year": "2024",
+      "paintRisk": 1,
+      "notes": "The 2024 7 series features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 16,
+      "make": "Mercedes",
+      "model": "C-Class",
+      "year": "2020",
+      "paintRisk": 4,
+      "notes": "The 2020 C-Class is known to have a good quality factory paint application."
+    },
+    {
+      "id": 17,
+      "make": "Mercedes",
+      "model": "C-Class",
+      "year": "2021",
+      "paintRisk": 4,
+      "notes": "The 2021 C-Class is known to have a good quality factory paint application."
+    },
+    {
+      "id": 18,
+      "make": "Mercedes",
+      "model": "C-Class",
+      "year": "2022",
+      "paintRisk": 7,
+      "notes": "The 2022 C-Class features a less resilient clear coat, which is known to be slightly more prone to scratching."
+    },
+    {
+      "id": 19,
+      "make": "Mercedes",
+      "model": "C-Class",
+      "year": "2023",
+      "paintRisk": 7,
+      "notes": "The 2023 C-Class features a less resilient clear coat, which is known to be slightly more prone to scratching."
+    },
+    {
+      "id": 20,
+      "make": "Mercedes",
+      "model": "C-Class",
+      "year": "2024",
+      "paintRisk": 6,
+      "notes": "The 2024 C-Class is known to have a good quality factory paint application."
+    },
+    {
+      "id": 21,
+      "make": "Mercedes",
+      "model": "E-Class",
+      "year": "2020",
+      "paintRisk": 2,
+      "notes": "The 2020 E-Class is known to have a very resilient clear coat."
+    },
+    {
+      "id": 22,
+      "make": "Mercedes",
+      "model": "E-Class",
+      "year": "2021",
+      "paintRisk": 2,
+      "notes": "The 2021 E-Class is known to have a very resilient clear coat."
+    },
+    {
+      "id": 23,
+      "make": "Mercedes",
+      "model": "E-Class",
+      "year": "2022",
+      "paintRisk": 5,
+      "notes": "The 2022 E-Class features a less resilient clear coat, which is known to be slightly more prone to scratching."
+    },
+    {
+      "id": 24,
+      "make": "Mercedes",
+      "model": "E-Class",
+      "year": "2023",
+      "paintRisk": 5,
+      "notes": "The 2023 E-Class features a less resilient clear coat, which is known to be slightly more prone to scratching."
+    },
+    {
+      "id": 25,
+      "make": "Mercedes",
+      "model": "E-Class",
+      "year": "2024",
+      "paintRisk": 3,
+      "notes": "The 2024 E-Class is known to have a very resilient clear coat."
+    },
+    {
+      "id": 26,
+      "make": "Mercedes",
+      "model": "S-Class",
+      "year": "2020",
+      "paintRisk": 1,
+      "notes": "The 2020 S-Class is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 27,
+      "make": "Mercedes",
+      "model": "S-Class",
+      "year": "2021",
+      "paintRisk": 1,
+      "notes": "The 2021 S-Class is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 28,
+      "make": "Mercedes",
+      "model": "S-Class",
+      "year": "2022",
+      "paintRisk": 1,
+      "notes": "The 2022 S-Class is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 29,
+      "make": "Mercedes",
+      "model": "S-Class",
+      "year": "2023",
+      "paintRisk": 2,
+      "notes": "The 2023 S-Class is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 30,
+      "make": "Mercedes",
+      "model": "S-Class",
+      "year": "2024",
+      "paintRisk": 1,
+      "notes": "The 2024 S-Class is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 31,
+      "make": "Audi",
+      "model": "A3",
+      "year": "2020",
+      "paintRisk": 6,
+      "notes": "The 2020 Audi A3 features a relatively thinner clear coat, which is known to be slightly more prone to chipping."
+    },
+    {
+      "id": 32,
+      "make": "Audi",
+      "model": "A3",
+      "year": "2021",
+      "paintRisk": 7,
+      "notes": "The 2021 Audi A3 features a relatively thinner clear coat, which is known to be slightly more prone to chipping."
+    },
+    {
+      "id": 33,
+      "make": "Audi",
+      "model": "A3",
+      "year": "2022",
+      "paintRisk": 6,
+      "notes": "The 2022 Audi A3 features a relatively thinner clear coat, which is known to be slightly more prone to chipping."
+    },
+    {
+      "id": 34,
+      "make": "Audi",
+      "model": "A3",
+      "year": "2023",
+      "paintRisk": 6,
+      "notes": "The 2023 Audi A3 features a relatively thinner clear coat, which is known to be slightly more prone to chipping."
+    },
+    {
+      "id": 35,
+      "make": "Audi",
+      "model": "A3",
+      "year": "2024",
+      "paintRisk": 5,
+      "notes": "The 2024 Audi A3 is known to have a good quality factory paint application."
+    },
+    {
+      "id": 36,
+      "make": "Audi",
+      "model": "A6",
+      "year": "2020",
+      "paintRisk": 4,
+      "notes": "The 2020 Audi A6 is known to have a good quality factory paint application."
+    },
+    {
+      "id": 37,
+      "make": "Audi",
+      "model": "A6",
+      "year": "2021",
+      "paintRisk": 5,
+      "notes": "The 2021 Audi A6 features a less resilient clear coat, which is known to be slightly more prone to scratching."
+    },
+    {
+      "id": 38,
+      "make": "Audi",
+      "model": "A6",
+      "year": "2022",
+      "paintRisk": 5,
+      "notes": "The 2022 Audi A6 features a less resilient clear coat, which is known to be slightly more prone to scratching."
+    },
+    {
+      "id": 39,
+      "make": "Audi",
+      "model": "A6",
+      "year": "2023",
+      "paintRisk": 4,
+      "notes": "The 2023 Audi A6 is known to have a good quality factory paint application."
+    },
+    {
+      "id": 40,
+      "make": "Audi",
+      "model": "A6",
+      "year": "2024",
+      "paintRisk": 4,
+      "notes": "The 2024 Audi A6 is known to have a good quality factory paint application."
+    },
+    {
+      "id": 41,
+      "make": "Audi",
+      "model": "A8",
+      "year": "2020",
+      "paintRisk": 2,
+      "notes": "The 2020 Audi A8 is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 42,
+      "make": "Audi",
+      "model": "A8",
+      "year": "2021",
+      "paintRisk": 2,
+      "notes": "The 2021 Audi A8 is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 43,
+      "make": "Audi",
+      "model": "A8",
+      "year": "2022",
+      "paintRisk": 3,
+      "notes": "The 2022 Audi A8 is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 44,
+      "make": "Audi",
+      "model": "A8",
+      "year": "2023",
+      "paintRisk": 3,
+      "notes": "The 2023 Audi A8 is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 45,
+      "make": "Audi",
+      "model": "A8",
+      "year": "2024",
+      "paintRisk": 2,
+      "notes": "The 2024 Audi A8 is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 46,
+      "make": "Lexus",
+      "model": "ES",
+      "year": "2020",
+      "paintRisk": 3,
+      "notes": "The 2020 Lexus ES is known for a good quality paint application and a resilient clear coat."
+    },
+    {
+      "id": 47,
+      "make": "Lexus",
+      "model": "ES",
+      "year": "2021",
+      "paintRisk": 3,
+      "notes": "The 2021 Lexus ES is known for a good quality paint application and a resilient clear coat."
+    },
+    {
+      "id": 48,
+      "make": "Lexus",
+      "model": "ES",
+      "year": "2022",
+      "paintRisk": 4,
+      "notes": "The 2022 Lexus ES features a less resilient clear coat than older models."
+    },
+    {
+      "id": 49,
+      "make": "Lexus",
+      "model": "ES",
+      "year": "2023",
+      "paintRisk": 4,
+      "notes": "The 2023 Lexus ES features a less resilient clear coat than older models."
+    },
+    {
+      "id": 50,
+      "make": "Lexus",
+      "model": "ES",
+      "year": "2024",
+      "paintRisk": 3,
+      "notes": "The 2024 Lexus ES is known for a good quality paint application and a resilient clear coat."
+    },
+    {
+      "id": 51,
+      "make": "Lexus",
+      "model": "LS",
+      "year": "2020",
+      "paintRisk": 1,
+      "notes": "The 2020 Lexus LS features excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 52,
+      "make": "Lexus",
+      "model": "LS",
+      "year": "2021",
+      "paintRisk": 1,
+      "notes": "The 2021 Lexus LS features excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 53,
+      "make": "Lexus",
+      "model": "LS",
+      "year": "2022",
+      "paintRisk": 2,
+      "notes": "The 2022 Lexus LS features excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 54,
+      "make": "Lexus",
+      "model": "LS",
+      "year": "2023",
+      "paintRisk": 2,
+      "notes": "The 2023 Lexus LS features excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 55,
+      "make": "Lexus",
+      "model": "LS",
+      "year": "2024",
+      "paintRisk": 1,
+      "notes": "The 2024 Lexus LS features excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 56,
+      "make": "Lexus",
+      "model": "RX",
+      "year": "2020",
+      "paintRisk": 3,
+      "notes": "The 2020 Lexus RX has a good quality factory paint application."
+    },
+    {
+      "id": 57,
+      "make": "Lexus",
+      "model": "RX",
+      "year": "2021",
+      "paintRisk": 3,
+      "notes": "The 2021 Lexus RX has a good quality factory paint application."
+    },
+    {
+      "id": 58,
+      "make": "Lexus",
+      "model": "RX",
+      "year": "2022",
+      "paintRisk": 4,
+      "notes": "The 2022 Lexus RX features a less resilient clear coat than older models."
+    },
+    {
+      "id": 59,
+      "make": "Lexus",
+      "model": "RX",
+      "year": "2023",
+      "paintRisk": 4,
+      "notes": "The 2023 Lexus RX features a less resilient clear coat than older models."
+    },
+    {
+      "id": 60,
+      "make": "Lexus",
+      "model": "RX",
+      "year": "2024",
+      "paintRisk": 3,
+      "notes": "The 2024 Lexus RX has a good quality factory paint application."
+    },
+    {
+      "id": 61,
+      "make": "Porsche",
+      "model": "911",
+      "year": "2020",
+      "paintRisk": 2,
+      "notes": "The 2020 Porsche 911 is known for a very resilient clear coat and good quality paint application."
+    },
+    {
+      "id": 62,
+      "make": "Porsche",
+      "model": "911",
+      "year": "2021",
+      "paintRisk": 2,
+      "notes": "The 2021 Porsche 911 is known for a very resilient clear coat and good quality paint application."
+    },
+    {
+      "id": 63,
+      "make": "Porsche",
+      "model": "911",
+      "year": "2022",
+      "paintRisk": 3,
+      "notes": "The 2022 Porsche 911 features a less resilient clear coat than older models."
+    },
+    {
+      "id": 64,
+      "make": "Porsche",
+      "model": "911",
+      "year": "2023",
+      "paintRisk": 3,
+      "notes": "The 2023 Porsche 911 features a less resilient clear coat than older models."
+    },
+    {
+      "id": 65,
+      "make": "Porsche",
+      "model": "911",
+      "year": "2024",
+      "paintRisk": 2,
+      "notes": "The 2024 Porsche 911 is known for a very resilient clear coat and good quality paint application."
+    },
+    {
+      "id": 66,
+      "make": "Porsche",
+      "model": "Cayenne",
+      "year": "2020",
+      "paintRisk": 3,
+      "notes": "The 2020 Porsche Cayenne typically features a resilient clear coat and good quality factory application."
+    },
+    {
+      "id": 67,
+      "make": "Porsche",
+      "model": "Cayenne",
+      "year": "2021",
+      "paintRisk": 3,
+      "notes": "The 2021 Porsche Cayenne typically features a resilient clear coat and good quality factory application."
+    },
+    {
+      "id": 68,
+      "make": "Porsche",
+      "model": "Cayenne",
+      "year": "2022",
+      "paintRisk": 4,
+      "notes": "The 2022 Porsche Cayenne features a less resilient clear coat than older models."
+    },
+    {
+      "id": 69,
+      "make": "Porsche",
+      "model": "Cayenne",
+      "year": "2023",
+      "paintRisk": 4,
+      "notes": "The 2023 Porsche Cayenne features a less resilient clear coat than older models."
+    },
+    {
+      "id": 70,
+      "make": "Porsche",
+      "model": "Cayenne",
+      "year": "2024",
+      "paintRisk": 2,
+      "notes": "The 2024 Porsche Cayenne typically features a resilient clear coat and good quality factory application."
+    },
+    {
+      "id": 71,
+      "make": "Porsche",
+      "model": "Macan",
+      "year": "2020",
+      "paintRisk": 4,
+      "notes": "The 2020 Porsche Macan typically features a good quality paint application with a resilient clear coat."
+    },
+    {
+      "id": 72,
+      "make": "Porsche",
+      "model": "Macan",
+      "year": "2021",
+      "paintRisk": 4,
+      "notes": "The 2021 Porsche Macan typically features a good quality paint application with a resilient clear coat."
+    },
+    {
+      "id": 73,
+      "make": "Porsche",
+      "model": "Macan",
+      "year": "2022",
+      "paintRisk": 5,
+      "notes": "The 2022 Porsche Macan features a less resilient clear coat than older models."
+    },
+    {
+      "id": 74,
+      "make": "Porsche",
+      "model": "Macan",
+      "year": "2023",
+      "paintRisk": 5,
+      "notes": "The 2023 Porsche Macan features a less resilient clear coat than older models."
+    },
+    {
+      "id": 75,
+      "make": "Porsche",
+      "model": "Macan",
+      "year": "2024",
+      "paintRisk": 4,
+      "notes": "The 2024 Porsche Macan typically features a good quality paint application with a resilient clear coat."
+    },
+    {
+      "id": 76,
+      "make": "Land Rover",
+      "model": "Range Rover",
+      "year": "2020",
+      "paintRisk": 3,
+      "notes": "The 2020 Land Rover Range Rover is known for a good quality factory paint application."
+    },
+    {
+      "id": 77,
+      "make": "Land Rover",
+      "model": "Range Rover",
+      "year": "2021",
+      "paintRisk": 3,
+      "notes": "The 2021 Land Rover Range Rover is known for a good quality factory paint application."
+    },
+    {
+      "id": 78,
+      "make": "Land Rover",
+      "model": "Range Rover",
+      "year": "2022",
+      "paintRisk": 5,
+      "notes": "The 2022 Land Rover Range Rover has a less resilient clear coat than older models."
+    },
+    {
+      "id": 79,
+      "make": "Land Rover",
+      "model": "Range Rover",
+      "year": "2023",
+      "paintRisk": 5,
+      "notes": "The 2023 Land Rover Range Rover has a less resilient clear coat than older models."
+    },
+    {
+      "id": 80,
+      "make": "Land Rover",
+      "model": "Range Rover",
+      "year": "2024",
+      "paintRisk": 3,
+      "notes": "The 2024 Land Rover Range Rover is known for a good quality factory paint application."
+    },
+    {
+      "id": 81,
+      "make": "Land Rover",
+      "model": "Range Rover Sport",
+      "year": "2020",
+      "paintRisk": 4,
+      "notes": "The 2020 Land Rover Range Rover Sport has a good quality factory paint application, but is less resilient to chips."
+    },
+    {
+      "id": 82,
+      "make": "Land Rover",
+      "model": "Range Rover Sport",
+      "year": "2021",
+      "paintRisk": 4,
+      "notes": "The 2021 Land Rover Range Rover Sport has a good quality factory paint application, but is less resilient to chips."
+    },
+    {
+      "id": 83,
+      "make": "Land Rover",
+      "model": "Range Rover Sport",
+      "year": "2022",
+      "paintRisk": 6,
+      "notes": "The 2022 Land Rover Range Rover Sport has a less resilient clear coat than older models."
+    },
+    {
+      "id": 84,
+      "make": "Land Rover",
+      "model": "Range Rover Sport",
+      "year": "2023",
+      "paintRisk": 6,
+      "notes": "The 2023 Land Rover Range Rover Sport has a less resilient clear coat than older models."
+    },
+    {
+      "id": 85,
+      "make": "Land Rover",
+      "model": "Range Rover Sport",
+      "year": "2024",
+      "paintRisk": 5,
+      "notes": "The 2024 Land Rover Range Rover Sport has a good quality factory paint application, but is less resilient to chips."
+    },
+    {
+      "id": 86,
+      "make": "Land Rover",
+      "model": "Discovery",
+      "year": "2020",
+      "paintRisk": 4,
+      "notes": "The 2020 Land Rover Discovery has a good quality factory paint application, but is less resilient to chips."
+    },
+    {
+      "id": 87,
+      "make": "Land Rover",
+      "model": "Discovery",
+      "year": "2021",
+      "paintRisk": 4,
+      "notes": "The 2021 Land Rover Discovery has a good quality factory paint application, but is less resilient to chips."
+    },
+    {
+      "id": 88,
+      "make": "Land Rover",
+      "model": "Discovery",
+      "year": "2022",
+      "paintRisk": 5,
+      "notes": "The 2022 Land Rover Discovery has a less resilient clear coat than older models."
+    },
+    {
+      "id": 89,
+      "make": "Land Rover",
+      "model": "Discovery",
+      "year": "2023",
+      "paintRisk": 5,
+      "notes": "The 2023 Land Rover Discovery has a less resilient clear coat than older models."
+    },
+    {
+      "id": 90,
+      "make": "Land Rover",
+      "model": "Discovery",
+      "year": "2024",
+      "paintRisk": 4,
+      "notes": "The 2024 Land Rover Discovery has a good quality factory paint application, but is less resilient to chips."
+    },
+    {
+      "id": 91,
+      "make": "Tesla",
+      "model": "Model S",
+      "year": "2020",
+      "paintRisk": 5,
+      "notes": "The 2020 Tesla Model S has a relatively soft paint that is prone to swirl marks and minor scratches."
+    },
+    {
+      "id": 92,
+      "make": "Tesla",
+      "model": "Model S",
+      "year": "2021",
+      "paintRisk": 5,
+      "notes": "The 2021 Tesla Model S has a relatively soft paint that is prone to swirl marks and minor scratches."
+    },
+    {
+      "id": 93,
+      "make": "Tesla",
+      "model": "Model S",
+      "year": "2022",
+      "paintRisk": 6,
+      "notes": "The 2022 Tesla Model S features slightly improved paint but remains relatively soft."
+    },
+    {
+      "id": 94,
+      "make": "Tesla",
+      "model": "Model S",
+      "year": "2023",
+      "paintRisk": 6,
+      "notes": "The 2023 Tesla Model S features slightly improved paint but remains relatively soft."
+    },
+    {
+      "id": 95,
+      "make": "Tesla",
+      "model": "Model S",
+      "year": "2024",
+      "paintRisk": 5,
+      "notes": "The 2024 Tesla Model S has a relatively soft paint that is prone to swirl marks and minor scratches."
+    },
+    {
+      "id": 96,
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": "2020",
+      "paintRisk": 6,
+      "notes": "The 2020 Tesla Model 3 is known for having a softer paint that is prone to minor damage."
+    },
+    {
+      "id": 97,
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": "2021",
+      "paintRisk": 6,
+      "notes": "The 2021 Tesla Model 3 is known for having a softer paint that is prone to minor damage."
+    },
+    {
+      "id": 98,
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": "2022",
+      "paintRisk": 7,
+      "notes": "The 2022 Tesla Model 3 features a relatively thinner paint that is prone to scratching and swirl marks."
+    },
+    {
+      "id": 99,
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": "2023",
+      "paintRisk": 7,
+      "notes": "The 2023 Tesla Model 3 features a relatively thinner paint that is prone to scratching and swirl marks."
+    },
+    {
+      "id": 100,
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": "2024",
+      "paintRisk": 6,
+      "notes": "The 2024 Tesla Model 3 is known for having a softer paint that is prone to minor damage."
+    },
+    {
+      "id": 101,
+      "make": "Tesla",
+      "model": "Model X",
+      "year": "2020",
+      "paintRisk": 5,
+      "notes": "The 2020 Tesla Model X is known for having a softer paint that is prone to minor damage."
+    },
+    {
+      "id": 102,
+      "make": "Tesla",
+      "model": "Model X",
+      "year": "2021",
+      "paintRisk": 5,
+      "notes": "The 2021 Tesla Model X is known for having a softer paint that is prone to minor damage."
+    },
+    {
+      "id": 103,
+      "make": "Tesla",
+      "model": "Model X",
+      "year": "2022",
+      "paintRisk": 6,
+      "notes": "The 2022 Tesla Model X features slightly improved paint but remains relatively soft."
+    },
+    {
+      "id": 104,
+      "make": "Tesla",
+      "model": "Model X",
+      "year": "2023",
+      "paintRisk": 6,
+      "notes": "The 2023 Tesla Model X features slightly improved paint but remains relatively soft."
+    },
+    {
+      "id": 105,
+      "make": "Tesla",
+      "model": "Model X",
+      "year": "2024",
+      "paintRisk": 5,
+      "notes": "The 2024 Tesla Model X is known for having a softer paint that is prone to minor damage."
+    },
+    {
+      "id": 106,
+      "make": "Tesla",
+      "model": "Model Y",
+      "year": "2020",
+      "paintRisk": 6,
+      "notes": "The 2020 Tesla Model Y is known for having a softer paint that is prone to minor damage."
+    },
+    {
+      "id": 107,
+      "make": "Tesla",
+      "model": "Model Y",
+      "year": "2021",
+      "paintRisk": 6,
+      "notes": "The 2021 Tesla Model Y is known for having a softer paint that is prone to minor damage."
+    },
+    {
+      "id": 108,
+      "make": "Tesla",
+      "model": "Model Y",
+      "year": "2022",
+      "paintRisk": 7,
+      "notes": "The 2022 Tesla Model Y features a relatively thinner paint that is prone to scratching and swirl marks."
+    },
+    {
+      "id": 109,
+      "make": "Tesla",
+      "model": "Model Y",
+      "year": "2023",
+      "paintRisk": 7,
+      "notes": "The 2023 Tesla Model Y features a relatively thinner paint that is prone to scratching and swirl marks."
+    },
+    {
+      "id": 110,
+      "make": "Tesla",
+      "model": "Model Y",
+      "year": "2024",
+      "paintRisk": 6,
+      "notes": "The 2024 Tesla Model Y is known for having a softer paint that is prone to minor damage."
+    },
+    {
+      "id": 111,
+      "make": "Bentley",
+      "model": "Continental GT",
+      "year": "2020",
+      "paintRisk": 2,
+      "notes": "The 2020 Bentley Continental GT is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 112,
+      "make": "Bentley",
+      "model": "Continental GT",
+      "year": "2021",
+      "paintRisk": 2,
+      "notes": "The 2021 Bentley Continental GT is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 113,
+      "make": "Bentley",
+      "model": "Continental GT",
+      "year": "2022",
+      "paintRisk": 3,
+      "notes": "The 2022 Bentley Continental GT is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 114,
+      "make": "Bentley",
+      "model": "Continental GT",
+      "year": "2023",
+      "paintRisk": 3,
+      "notes": "The 2023 Bentley Continental GT is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 115,
+      "make": "Bentley",
+      "model": "Continental GT",
+      "year": "2024",
+      "paintRisk": 2,
+      "notes": "The 2024 Bentley Continental GT is known for excellent factory paint application and a very resilient clear coat."
+    },
+    {
+      "id": 116,
+      "make": "Bentley",
+      "model": "Flying Spur",
+      "year": "2020",
+      "paintRisk": 1,
+      "notes": "The 2020 Bentley Flying Spur features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 117,
+      "make": "Bentley",
+      "model": "Flying Spur",
+      "year": "2021",
+      "paintRisk": 1,
+      "notes": "The 2021 Bentley Flying Spur features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 118,
+      "make": "Bentley",
+      "model": "Flying Spur",
+      "year": "2022",
+      "paintRisk": 2,
+      "notes": "The 2022 Bentley Flying Spur features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 119,
+      "make": "Bentley",
+      "model": "Flying Spur",
+      "year": "2023",
+      "paintRisk": 2,
+      "notes": "The 2023 Bentley Flying Spur features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 120,
+      "make": "Bentley",
+      "model": "Flying Spur",
+      "year": "2024",
+      "paintRisk": 1,
+      "notes": "The 2024 Bentley Flying Spur features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 121,
+      "make": "Rolls-Royce",
+      "model": "Phantom",
+      "year": "2020",
+      "paintRisk": 1,
+      "notes": "The 2020 Rolls-Royce Phantom has an exceptionally high quality, durable paint system."
+    },
+    {
+      "id": 122,
+      "make": "Rolls-Royce",
+      "model": "Phantom",
+      "year": "2021",
+      "paintRisk": 1,
+      "notes": "The 2021 Rolls-Royce Phantom has an exceptionally high quality, durable paint system."
+    },
+    {
+      "id": 123,
+      "make": "Rolls-Royce",
+      "model": "Phantom",
+      "year": "2022",
+      "paintRisk": 1,
+      "notes": "The 2022 Rolls-Royce Phantom has an exceptionally high quality, durable paint system."
+    },
+    {
+      "id": 124,
+      "make": "Rolls-Royce",
+      "model": "Phantom",
+      "year": "2023",
+      "paintRisk": 1,
+      "notes": "The 2023 Rolls-Royce Phantom has an exceptionally high quality, durable paint system."
+    },
+    {
+      "id": 125,
+      "make": "Rolls-Royce",
+      "model": "Phantom",
+      "year": "2024",
+      "paintRisk": 1,
+      "notes": "The 2024 Rolls-Royce Phantom has an exceptionally high quality, durable paint system."
+    },
+    {
+      "id": 126,
+      "make": "Rolls-Royce",
+      "model": "Ghost",
+      "year": "2020",
+      "paintRisk": 1,
+      "notes": "The 2020 Rolls-Royce Ghost has an exceptionally high quality, durable paint system."
+    },
+    {
+      "id": 127,
+      "make": "Rolls-Royce",
+      "model": "Ghost",
+      "year": "2021",
+      "paintRisk": 1,
+      "notes": "The 2021 Rolls-Royce Ghost has an exceptionally high quality, durable paint system."
+    },
+    {
+      "id": 128,
+      "make": "Rolls-Royce",
+      "model": "Ghost",
+      "year": "2022",
+      "paintRisk": 1,
+      "notes": "The 2022 Rolls-Royce Ghost has an exceptionally high quality, durable paint system."
+    },
+    {
+      "id": 129,
+      "make": "Rolls-Royce",
+      "model": "Ghost",
+      "year": "2023",
+      "paintRisk": 1,
+      "notes": "The 2023 Rolls-Royce Ghost has an exceptionally high quality, durable paint system."
+    },
+    {
+      "id": 130,
+      "make": "Rolls-Royce",
+      "model": "Ghost",
+      "year": "2024",
+      "paintRisk": 1,
+      "notes": "The 2024 Rolls-Royce Ghost has an exceptionally high quality, durable paint system."
+    },
+    {
+      "id": 131,
+      "make": "Lamborghini",
+      "model": "Aventador",
+      "year": "2020",
+      "paintRisk": 4,
+      "notes": "The 2020 Lamborghini Aventador is known for a high-quality paint finish, but is susceptible to minor scratches."
+    },
+    {
+      "id": 132,
+      "make": "Lamborghini",
+      "model": "Aventador",
+      "year": "2021",
+      "paintRisk": 4,
+      "notes": "The 2021 Lamborghini Aventador is known for a high-quality paint finish, but is susceptible to minor scratches."
+    },
+    {
+      "id": 133,
+      "make": "Lamborghini",
+      "model": "Aventador",
+      "year": "2022",
+      "paintRisk": 5,
+      "notes": "The 2022 Lamborghini Aventador features a less resilient clear coat, prone to scratches."
+    },
+    {
+      "id": 134,
+      "make": "Lamborghini",
+      "model": "Aventador",
+      "year": "2023",
+      "paintRisk": 5,
+      "notes": "The 2023 Lamborghini Aventador features a less resilient clear coat, prone to scratches."
+    },
+    {
+      "id": 135,
+      "make": "Lamborghini",
+      "model": "Aventador",
+      "year": "2024",
+      "paintRisk": 4,
+      "notes": "The 2024 Lamborghini Aventador is known for a high-quality paint finish, but is susceptible to minor scratches."
+    },
+    {
+      "id": 136,
+      "make": "Lamborghini",
+      "model": "Huracan",
+      "year": "2020",
+      "paintRisk": 4,
+      "notes": "The 2020 Lamborghini Huracan has a high-quality paint finish and is generally resilient."
+    },
+    {
+      "id": 137,
+      "make": "Lamborghini",
+      "model": "Huracan",
+      "year": "2021",
+      "paintRisk": 4,
+      "notes": "The 2021 Lamborghini Huracan has a high-quality paint finish and is generally resilient."
+    },
+    {
+      "id": 138,
+      "make": "Lamborghini",
+      "model": "Huracan",
+      "year": "2022",
+      "paintRisk": 5,
+      "notes": "The 2022 Lamborghini Huracan features a less resilient clear coat, prone to scratches."
+    },
+    {
+      "id": 139,
+      "make": "Lamborghini",
+      "model": "Huracan",
+      "year": "2023",
+      "paintRisk": 5,
+      "notes": "The 2023 Lamborghini Huracan features a less resilient clear coat, prone to scratches."
+    },
+    {
+      "id": 140,
+      "make": "Lamborghini",
+      "model": "Huracan",
+      "year": "2024",
+      "paintRisk": 4,
+      "notes": "The 2024 Lamborghini Huracan has a high-quality paint finish and is generally resilient."
+    },
+    {
+      "id": 141,
+      "make": "Maserati",
+      "model": "Ghibli",
+      "year": "2020",
+      "paintRisk": 5,
+      "notes": "The 2020 Maserati Ghibli is known for a softer paint and is prone to swirl marks and scratches."
+    },
+    {
+      "id": 142,
+      "make": "Maserati",
+      "model": "Ghibli",
+      "year": "2021",
+      "paintRisk": 5,
+      "notes": "The 2021 Maserati Ghibli is known for a softer paint and is prone to swirl marks and scratches."
+    },
+    {
+      "id": 143,
+      "make": "Maserati",
+      "model": "Ghibli",
+      "year": "2022",
+      "paintRisk": 6,
+      "notes": "The 2022 Maserati Ghibli features a slightly thinner paint that is prone to scratches."
+    },
+    {
+      "id": 144,
+      "make": "Maserati",
+      "model": "Ghibli",
+      "year": "2023",
+      "paintRisk": 6,
+      "notes": "The 2023 Maserati Ghibli features a slightly thinner paint that is prone to scratches."
+    },
+    {
+      "id": 145,
+      "make": "Maserati",
+      "model": "Ghibli",
+      "year": "2024",
+      "paintRisk": 5,
+      "notes": "The 2024 Maserati Ghibli is known for a softer paint and is prone to swirl marks and scratches."
+    },
+    {
+      "id": 146,
+      "make": "Maserati",
+      "model": "Quattroporte",
+      "year": "2020",
+      "paintRisk": 4,
+      "notes": "The 2020 Maserati Quattroporte features a good quality factory paint application."
+    },
+    {
+      "id": 147,
+      "make": "Maserati",
+      "model": "Quattroporte",
+      "year": "2021",
+      "paintRisk": 4,
+      "notes": "The 2021 Maserati Quattroporte features a good quality factory paint application."
+    },
+    {
+      "id": 148,
+      "make": "Maserati",
+      "model": "Quattroporte",
+      "year": "2022",
+      "paintRisk": 5,
+      "notes": "The 2022 Maserati Quattroporte features a less resilient clear coat than older models."
+    },
+    {
+      "id": 149,
+      "make": "Maserati",
+      "model": "Quattroporte",
+      "year": "2023",
+      "paintRisk": 5,
+      "notes": "The 2023 Maserati Quattroporte features a less resilient clear coat than older models."
+    },
+    {
+      "id": 150,
+      "make": "Maserati",
+      "model": "Quattroporte",
+      "year": "2024",
+      "paintRisk": 4,
+      "notes": "The 2024 Maserati Quattroporte features a good quality factory paint application."
+    },
+    {
+      "id": 151,
+      "make": "Acura",
+      "model": "NSX",
+      "year": "2020",
+      "paintRisk": 2,
+      "notes": "The 2020 Acura NSX features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 152,
+      "make": "Acura",
+      "model": "NSX",
+      "year": "2021",
+      "paintRisk": 2,
+      "notes": "The 2021 Acura NSX features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 153,
+      "make": "Acura",
+      "model": "NSX",
+      "year": "2022",
+      "paintRisk": 2,
+      "notes": "The 2022 Acura NSX features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 154,
+      "make": "Acura",
+      "model": "NSX",
+      "year": "2023",
+      "paintRisk": 2,
+      "notes": "The 2023 Acura NSX features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 155,
+      "make": "Acura",
+      "model": "NSX",
+      "year": "2024",
+      "paintRisk": 2,
+      "notes": "The 2024 Acura NSX features an exceptionally well-applied and durable clear coat."
+    },
+    {
+      "id": 156,
+      "make": "Acura",
+      "model": "MDX",
+      "year": "2020",
+      "paintRisk": 3,
+      "notes": "The 2020 Acura MDX has a good quality factory paint application and resilient clear coat."
+    },
+    {
+      "id": 157,
+      "make": "Acura",
+      "model": "MDX",
+      "year": "2021",
+      "paintRisk": 3,
+      "notes": "The 2021 Acura MDX has a good quality factory paint application and resilient clear coat."
+    },
+    {
+      "id": 158,
+      "make": "Acura",
+      "model": "MDX",
+      "year": "2022",
+      "paintRisk": 4,
+      "notes": "The 2022 Acura MDX features a less resilient clear coat than older models."
+    },
+    {
+      "id": 159,
+      "make": "Acura",
+      "model": "MDX",
+      "year": "2023",
+      "paintRisk": 4,
+      "notes": "The 2023 Acura MDX features a less resilient clear coat than older models."
+    },
+    {
+      "id": 160,
+      "make": "Acura",
+      "model": "MDX",
+      "year": "2024",
+      "paintRisk": 3,
+      "notes": "The 2024 Acura MDX has a good quality factory paint application and resilient clear coat."
+    },
+    {
+      "id": 161,
+      "make": "Cadillac",
+      "model": "Escalade",
+      "year": "2020",
+      "paintRisk": 4,
+      "notes": "The 2020 Cadillac Escalade is known for a high-quality paint finish, but is prone to scratches."
+    },
+    {
+      "id": 162,
+      "make": "Cadillac",
+      "model": "Escalade",
+      "year": "2021",
+      "paintRisk": 4,
+      "notes": "The 2021 Cadillac Escalade is known for a high-quality paint finish, but is prone to scratches."
+    },
+    {
+      "id": 163,
+      "make": "Cadillac",
+      "model": "Escalade",
+      "year": "2022",
+      "paintRisk": 5,
+      "notes": "The 2022 Cadillac Escalade has a less resilient clear coat, which is more prone to scratches"
+    },
+    {
+      "id": 164,
+      "make": "Cadillac",
+      "model": "Escalade",
+      "year": "2023",
+      "paintRisk": 5,
+      "notes": "The 2023 Cadillac Escalade has a less resilient clear coat, which is more prone to scratches"
+    },
+    {
+      "id": 165,
+      "make": "Cadillac",
+      "model": "Escalade",
+      "year": "2024",
+      "paintRisk": 4,
+      "notes": "The 2024 Cadillac Escalade is known for a high-quality paint finish, but is prone to scratches."
+    },
+    {
+      "id": 166,
+      "make": "Cadillac",
+      "model": "CT5",
+      "year": "2020",
+      "paintRisk": 5,
+      "notes": "The 2020 Cadillac CT5 is known for a relatively soft paint that is prone to swirl marks and minor scratches."
+    },
+    {
+      "id": 167,
+      "make": "Cadillac",
+      "model": "CT5",
+      "year": "2021",
+      "paintRisk": 5,
+      "notes": "The 2021 Cadillac CT5 is known for a relatively soft paint that is prone to swirl marks and minor scratches."
+    },
+    {
+      "id": 168,
+      "make": "Cadillac",
+      "model": "CT5",
+      "year": "2022",
+      "paintRisk": 6,
+      "notes": "The 2022 Cadillac CT5 features a slightly thinner paint that is more prone to scratches."
+    },
+    {
+      "id": 169,
+      "make": "Cadillac",
+      "model": "CT5",
+      "year": "2023",
+      "paintRisk": 6,
+      "notes": "The 2023 Cadillac CT5 features a slightly thinner paint that is more prone to scratches."
+    },
+    {
+      "id": 170,
+      "make": "Cadillac",
+      "model": "CT5",
+      "year": "2024",
+      "paintRisk": 5,
+      "notes": "The 2024 Cadillac CT5 is known for a relatively soft paint that is prone to swirl marks and minor scratches."
+    }
+  ]
+}
