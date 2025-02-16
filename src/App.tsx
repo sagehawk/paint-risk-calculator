@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from "react"; // Import useRef
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import {
   Shield,
   AlertTriangle,
@@ -10,6 +10,7 @@ import {
   Award,
   Zap,
 } from "lucide-react";
+// import { Accordion } from "@/components/ui/accordion"; // Commented out as it's causing an error
 
 interface DamageType {
   id: string;
@@ -40,7 +41,7 @@ interface AnalysisResult {
   };
   specificFactors: string[];
   additionalNotes?: string;
-  vehicleSize: string;
+  vehicleSize: VehicleSize;
 }
 
 interface PaintData {
@@ -57,6 +58,8 @@ interface Db {
   paints: PaintData[];
 }
 
+type VehicleSize = "Compact" | "Sedan" | "SUV" | "Truck" | "Large Sedan";
+
 const damageTypes: DamageType[] = [
   { id: "swirls", label: "Swirl Marks", icon: Sun },
   { id: "scratches", label: "Light Scratches", icon: AlertTriangle },
@@ -65,7 +68,7 @@ const damageTypes: DamageType[] = [
 ];
 
 // SVG Components for Vehicle Representation
-const SedanSVG = () => (
+const SedanSVG: React.FC = () => (
   <svg viewBox="0 0 100 40" width="100" height="40">
     <rect x="10" y="15" width="80" height="20" fill="#ddd" />
     <circle cx="25" cy="35" r="5" fill="#333" />
@@ -74,7 +77,7 @@ const SedanSVG = () => (
   </svg>
 );
 
-const SUVSVG = () => (
+const SUVSVG: React.FC = () => (
   <svg viewBox="0 0 100 50" width="100" height="50">
     <rect x="10" y="10" width="80" height="30" fill="#ddd" />
     <rect x="20" y="5" width="60" height="5" fill="#bbb" />
@@ -83,7 +86,7 @@ const SUVSVG = () => (
   </svg>
 );
 
-const TruckSVG = () => (
+const TruckSVG: React.FC = () => (
   <svg viewBox="0 0 120 60" width="120" height="60">
     <rect x="10" y="10" width="100" height="30" fill="#ddd" />
     <rect x="20" y="5" width="80" height="5" fill="#bbb" />
@@ -93,7 +96,7 @@ const TruckSVG = () => (
   </svg>
 );
 
-const CompactSVG = () => (
+const CompactSVG: React.FC = () => (
   <svg viewBox="0 0 80 35" width="80" height="35">
     <rect x="5" y="15" width="70" height="15" fill="#ddd" />
     <circle cx="20" cy="30" r="4" fill="#333" />
@@ -102,7 +105,7 @@ const CompactSVG = () => (
   </svg>
 );
 
-const LargeSedanSVG = () => (
+const LargeSedanSVG: React.FC = () => (
   <svg viewBox="0 0 110 45" width="110" height="45">
     <rect x="10" y="15" width="90" height="20" fill="#ddd" />
     <rect x="20" y="10" width="70" height="5" fill="#bbb" />
@@ -112,7 +115,7 @@ const LargeSedanSVG = () => (
   </svg>
 );
 
-export default function PaintDamageAnalyzer() {
+const PaintDamageAnalyzer: React.FC = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({
     carMake: "",
@@ -126,14 +129,13 @@ export default function PaintDamageAnalyzer() {
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [paintData, setPaintData] = useState<Db | null>(null);
-  const [makeSuggestions, setMakeSuggestions] = useState<string[]>([]);
+  const [allMakes, setAllMakes] = useState<string[]>([]);
   const [modelSuggestions, setModelSuggestions] = useState<string[]>([]);
   const [yearSuggestions, setYearSuggestions] = useState<string[]>([]);
   const [showMakeSuggestions, setShowMakeSuggestions] = useState(false);
   const [showModelSuggestions, setShowModelSuggestions] = useState(false);
   const [showYearSuggestions, setShowYearSuggestions] = useState(false);
 
-  // Create refs for input fields
   const makeInputRef = useRef<HTMLInputElement>(null);
   const modelInputRef = useRef<HTMLInputElement>(null);
   const yearInputRef = useRef<HTMLInputElement>(null);
@@ -156,7 +158,8 @@ export default function PaintDamageAnalyzer() {
       let damageRisk = currentDamage.length * 5;
       let specificFactors: string[] = [];
       let additionalNotes: string | undefined;
-      let vehicleSize = "Sedan"; // Default size
+      let vehicleSize: VehicleSize = "Sedan"; // Default size
+
       if (!paintData) return;
 
       const data = paintData.paints;
@@ -169,7 +172,7 @@ export default function PaintDamageAnalyzer() {
 
       if (paintInfo) {
         baseRisk += paintInfo.paintRisk;
-        vehicleSize = paintInfo.sizeCategory; // Get vehicle size
+        vehicleSize = paintInfo.sizeCategory as VehicleSize; // Get vehicle size
         if (paintInfo.notes) {
           specificFactors.push(paintInfo.notes);
         }
@@ -229,14 +232,15 @@ export default function PaintDamageAnalyzer() {
         specificFactors.push("Your car currently has no visible paint damage.");
       }
 
-      const sizeMultipliers = {
+      const sizeMultipliers: { [key in VehicleSize]: number } = {
         Compact: 0.8,
         Sedan: 1.0,
         SUV: 1.2,
         Truck: 1.5,
         "Large Sedan": 1.1,
       };
-      const sizeMultiplier = sizeMultipliers[vehicleSize] || 1.0;
+
+      const sizeMultiplier = sizeMultipliers[vehicleSize];
 
       const totalRisk = Math.min(
         98,
@@ -314,23 +318,30 @@ export default function PaintDamageAnalyzer() {
   };
 
   useEffect(() => {
-    import("./db.json")
-      .then((module) => {
-        setPaintData(module as Db);
-        if (module) {
-          const allMakes = [
-            ...new Set(module.paints.map((paint: PaintData) => paint.make)),
-          ].sort();
-          setMakeSuggestions(allMakes);
-          const allYears = [
-            ...new Set(module.paints.map((paint: PaintData) => paint.year)),
-          ].sort();
+    const loadData = async () => {
+      try {
+        const module = await import("./db.json");
+
+        if (module.default) {
+          const dbData = module.default as Db;
+          setPaintData(dbData);
+
+          const allMakes = Array.from(new Set(
+              module.default.paints.map((paint: PaintData) => paint.make)
+            )).sort();
+          setAllMakes(allMakes);
+
+          const allYears = Array.from(new Set(
+              module.default.paints.map((paint: PaintData) => paint.year)
+            )).sort();
           setYearSuggestions(allYears);
         }
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error loading db.json: ", error);
-      });
+      }
+    };
+
+    loadData();
   }, []);
   const handleMakeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!paintData) return;
@@ -339,16 +350,17 @@ export default function PaintDamageAnalyzer() {
     const inputEvent = e.nativeEvent as InputEvent;
 
     if (value === "" || inputEvent.inputType === "deleteContentBackward") {
-      const allMakes = [
-        ...new Set(paintData.paints.map((paint: PaintData) => paint.make)),
-      ].sort();
-      setMakeSuggestions(allMakes);
+      const allMakesSet = new Set(paintData.paints.map((paint: PaintData) => paint.make));
+      const allMakes = Array.from(allMakesSet).sort();
+      setAllMakes(allMakes);
       setShowMakeSuggestions(true);
     } else {
-      const filteredMakes = makeSuggestions
-        .filter((make) => make.toLowerCase().startsWith(value.toLowerCase()))
+      const filteredMakes = allMakes
+        .filter((make: string) =>
+          make.toLowerCase().startsWith(value.toLowerCase())
+        )
         .sort();
-      setMakeSuggestions(filteredMakes);
+      setAllMakes(filteredMakes);
       setShowMakeSuggestions(true);
       if (filteredMakes.length === 1) {
         setFormData({
@@ -361,8 +373,8 @@ export default function PaintDamageAnalyzer() {
           // Blur the make input field
           makeInputRef.current.blur();
         }
-        setMakeSuggestions([]);
         setShowMakeSuggestions(false);
+        setAllMakes([]);
       }
     }
   };
@@ -377,12 +389,15 @@ export default function PaintDamageAnalyzer() {
         .filter((paint: PaintData) => paint.make === formData.carMake)
         .map((paint: PaintData) => paint.model)
         .sort();
-      const uniqueModels = [...new Set(allModels)].sort();
+      const uniqueModelsSet = new Set(allModels);
+      const uniqueModels = Array.from(uniqueModelsSet).sort();
       setModelSuggestions(uniqueModels);
       setShowModelSuggestions(true);
     } else {
       const filteredModels = modelSuggestions
-        .filter((model) => model.toLowerCase().startsWith(value.toLowerCase()))
+        .filter((model) =>
+          model.toLowerCase().startsWith(value.toLowerCase())
+        )
         .sort();
       setModelSuggestions(filteredModels);
       setShowModelSuggestions(true);
@@ -410,7 +425,8 @@ export default function PaintDamageAnalyzer() {
         )
         .map((paint: PaintData) => paint.year)
         .sort();
-      const uniqueYears = [...new Set(allYears)].sort();
+      const uniqueYearsSet = new Set(allYears);
+      const uniqueYears = Array.from(uniqueYearsSet).sort();
       setYearSuggestions(uniqueYears);
       setShowYearSuggestions(true);
     } else {
@@ -432,12 +448,12 @@ export default function PaintDamageAnalyzer() {
   };
   const handleMakeFocus = () => {
     if (!paintData) return;
-    const filteredMakes = makeSuggestions
-      .filter((make) =>
+    const filteredMakes = allMakes
+      .filter((make: string) =>
         make.toLowerCase().startsWith(formData.carMake.toLowerCase())
       )
       .sort();
-    setMakeSuggestions(filteredMakes);
+    setAllMakes(filteredMakes);
     setShowMakeSuggestions(true);
     setModelSuggestions([]);
     setShowModelSuggestions(false);
@@ -450,8 +466,9 @@ export default function PaintDamageAnalyzer() {
       .filter((paint: PaintData) => paint.make === formData.carMake)
       .map((paint: PaintData) => paint.model)
       .sort();
-    const uniqueModels = [...new Set(allModels)].sort();
-    const filteredModels = uniqueModels
+    const uniqueModelsSet = new Set(allModels);
+    const uniqueModels = Array.from(uniqueModelsSet).sort();
+    const filteredModels = modelSuggestions
       .filter((model) =>
         model.toLowerCase().startsWith(formData.carModel.toLowerCase())
       )
@@ -470,7 +487,8 @@ export default function PaintDamageAnalyzer() {
       )
       .map((paint: PaintData) => paint.year)
       .sort();
-    const uniqueYears = [...new Set(allYears)].sort();
+    const uniqueYearsSet = new Set(allYears);
+    const uniqueYears = Array.from(uniqueYearsSet).sort();
     const filteredYears = uniqueYears
       .filter((year) => year.startsWith(formData.carYear))
       .sort();
@@ -488,20 +506,18 @@ export default function PaintDamageAnalyzer() {
       // Blur the make input field
       makeInputRef.current.blur();
     }
-    setMakeSuggestions([]);
     setShowMakeSuggestions(false);
+    setAllMakes([]);
     if (!paintData) return;
     const allModels = paintData.paints
       .filter((paint: PaintData) => paint.make === suggestion)
       .map((paint: PaintData) => paint.model)
       .sort();
-    const uniqueModels = [...new Set(allModels)].sort();
+    const uniqueModelsSet = new Set(allModels);
+    const uniqueModels = Array.from(uniqueModelsSet).sort();
     setModelSuggestions(uniqueModels);
-    setYearSuggestions(
-      [
-        ...new Set(paintData.paints.map((paint: PaintData) => paint.year)),
-      ].sort()
-    );
+    const allYearsSet = new Set(paintData.paints.map((paint: PaintData) => paint.year));
+    setYearSuggestions(Array.from(allYearsSet).sort());
   };
   const selectModelSuggestion = (suggestion: string) => {
     setFormData({ ...formData, carModel: suggestion, carYear: "" });
@@ -519,7 +535,8 @@ export default function PaintDamageAnalyzer() {
       )
       .map((paint: PaintData) => paint.year)
       .sort();
-    const uniqueYears = [...new Set(allYears)].sort();
+    const uniqueYearsSet = new Set(allYears);
+    const uniqueYears = Array.from(uniqueYearsSet).sort();
     setYearSuggestions(uniqueYears);
   };
   const selectYearSuggestion = (suggestion: string) => {
@@ -535,11 +552,8 @@ export default function PaintDamageAnalyzer() {
     setTimeout(() => {
       setShowMakeSuggestions(false);
       if (paintData) {
-        setMakeSuggestions(
-          [
-            ...new Set(paintData.paints.map((paint: PaintData) => paint.make)),
-          ].sort()
-        );
+        const allMakesSet = new Set(paintData.paints.map((paint: PaintData) => paint.make));
+        setAllMakes(Array.from(allMakesSet).sort());
       }
     }, 150);
   };
@@ -554,11 +568,8 @@ export default function PaintDamageAnalyzer() {
     setTimeout(() => {
       setShowYearSuggestions(false);
       if (paintData) {
-        setYearSuggestions(
-          [
-            ...new Set(paintData.paints.map((paint: PaintData) => paint.year)),
-          ].sort()
-        );
+        const allYearsSet = new Set(paintData.paints.map((paint: PaintData) => paint.year));
+        setYearSuggestions(Array.from(allYearsSet).sort());
       }
     }, 150);
   };
@@ -582,10 +593,10 @@ export default function PaintDamageAnalyzer() {
                   onFocus={handleMakeFocus}
                   onBlur={handleMakeBlur}
                 />
-                {showMakeSuggestions && makeSuggestions.length > 0 && (
+                {showMakeSuggestions && allMakes.length > 0 && (
                   <div>
                     <ul className="absolute mt-1 w-full bg-white border rounded-md shadow-lg z-10 max-h-48 overflow-y-auto">
-                      {makeSuggestions.map((suggestion) => (
+                      {allMakes.map((suggestion:string) => (
                         <li
                           key={suggestion}
                           className="p-2 hover:bg-gray-100 cursor-pointer"
@@ -612,7 +623,7 @@ export default function PaintDamageAnalyzer() {
                 {showModelSuggestions && modelSuggestions.length > 0 && (
                   <div>
                     <ul className="absolute mt-1 w-full bg-white border rounded-md shadow-lg z-10 max-h-48 overflow-y-auto">
-                      {modelSuggestions.map((suggestion) => (
+                      {modelSuggestions.map((suggestion:string) => (
                         <li
                           key={suggestion}
                           className="p-2 hover:bg-gray-100 cursor-pointer"
@@ -639,7 +650,7 @@ export default function PaintDamageAnalyzer() {
                 {showYearSuggestions && yearSuggestions.length > 0 && (
                   <div>
                     <ul className="absolute mt-1 w-full bg-white border rounded-md shadow-lg z-10 max-h-48 overflow-y-auto">
-                      {yearSuggestions.map((suggestion) => (
+                      {yearSuggestions.map((suggestion:string) => (
                         <li
                           key={suggestion}
                           className="p-2 hover:bg-gray-100 cursor-pointer"
@@ -869,7 +880,7 @@ export default function PaintDamageAnalyzer() {
                   Key Factors Impacting Your Risk
                 </h3>
                 <ul className="list-disc list-inside text-gray-600">
-                  {analysis.specificFactors.map((factor, index) => (
+                  {analysis.specificFactors.map((factor: string, index: number) => (
                     <li key={index}>{factor}</li>
                   ))}
                 </ul>
@@ -951,3 +962,5 @@ export default function PaintDamageAnalyzer() {
     </div>
   );
 }
+
+export default PaintDamageAnalyzer;
