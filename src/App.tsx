@@ -335,15 +335,15 @@ const PaintDamageAnalyzer: React.FC = () => {
   };
 
 
-    useEffect(() => {
+  useEffect(() => {
     const loadData = async () => {
       try {
         const module = await import("./db.json");
 
         if (module.default) {
           // Correctly cast the imported JSON to the Db interface
-          const dbData: Db = module.default as Db;
-          setPaintData(dbData);
+          const dbData: Db = module.default as Db;  // Get the .default property
+          setPaintData(dbData); // Now you're passing the correct data
 
           // Use dbData to access the paints array
           const allMakes = [
@@ -362,8 +362,7 @@ const PaintDamageAnalyzer: React.FC = () => {
     };
 
     loadData();
-  }, []);
-
+}, []);
 
   const handleMakeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!paintData) return;
