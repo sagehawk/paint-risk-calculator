@@ -1,8 +1,8 @@
 {
   "name": "647nch",
-  "description": null,
+  "description": "",
   "version": "0.0.76",
-  "homepage": "https://sagehawk.github.io/Paint_Risk_Calculator/",
+  "homepage": "https://sagehawk.github.io/paint-risk-calculator/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
