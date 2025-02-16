@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Shield,
   AlertTriangle,
@@ -10,7 +10,19 @@ import {
   Award,
   Zap,
 } from "lucide-react";
-// import { Accordion } from "@/components/ui/accordion"; // Commented out as it's causing an error
+
+// Corrected Accordion Import (Option 2): Placeholder with correct props
+interface AccordionProps {
+  children?: React.ReactNode;
+}
+
+const Accordion: React.FC<AccordionProps> = ({ children }) => (
+  <div className="accordion">{children}</div>
+);
+// Or if you're not going to use it at all, just comment out the references
+// to <Accordion> later in the code.
+
+
 
 interface DamageType {
   id: string;
@@ -54,9 +66,11 @@ interface PaintData {
   desiredLook?: string;
 }
 
+// Db interface
 interface Db {
   paints: PaintData[];
 }
+
 
 type VehicleSize = "Compact" | "Sedan" | "SUV" | "Truck" | "Large Sedan";
 
@@ -90,7 +104,7 @@ const TruckSVG: React.FC = () => (
   <svg viewBox="0 0 120 60" width="120" height="60">
     <rect x="10" y="10" width="100" height="30" fill="#ddd" />
     <rect x="20" y="5" width="80" height="5" fill="#bbb" />
-    <rect x="100" y="20" width="20" height="20" fill="#ddd" /> // Truck bed
+    <rect x="100" y="20" width="20" height="20" fill="#ddd" /> {/* Truck bed */}
     <circle cx="30" cy="45" r="5" fill="#333" />
     <circle cx="90" cy="45" r="5" fill="#333" />
   </svg>
@@ -109,7 +123,7 @@ const LargeSedanSVG: React.FC = () => (
   <svg viewBox="0 0 110 45" width="110" height="45">
     <rect x="10" y="15" width="90" height="20" fill="#ddd" />
     <rect x="20" y="10" width="70" height="5" fill="#bbb" />
-    <rect x="90" y="15" width="20" height="15" fill="#ddd" /> // Longer back
+    <rect x="90" y="15" width="20" height="15" fill="#ddd" /> {/* Longer back */}
     <circle cx="25" cy="35" r="5" fill="#333" />
     <circle cx="85" cy="35" r="5" fill="#333" />
   </svg>
@@ -160,13 +174,16 @@ const PaintDamageAnalyzer: React.FC = () => {
       let additionalNotes: string | undefined;
       let vehicleSize: VehicleSize = "Sedan"; // Default size
 
-      if (!paintData) return;
+      if (!paintData) {
+          setLoading(false); // Ensure loading stops even if paintData is null
+          return;
+      }
 
       const data = paintData.paints;
       const paintInfo = data.find(
         (paint) =>
-          paint.make === carMake &&
-          paint.model === carModel &&
+          paint.make.toLowerCase() === carMake.toLowerCase() &&
+          paint.model.toLowerCase() === carModel.toLowerCase() &&
           paint.year === carYear
       );
 
@@ -317,26 +334,25 @@ const PaintDamageAnalyzer: React.FC = () => {
     }, 1500);
   };
 
-  useEffect(() => {
+
+    useEffect(() => {
     const loadData = async () => {
       try {
         const module = await import("./db.json");
 
         if (module.default) {
-          const dbData = module.default as Db;  // Correctly assert the type
+          // Correctly cast the imported JSON to the Db interface
+          const dbData: Db = module.default as Db;
           setPaintData(dbData);
 
+          // Use dbData to access the paints array
           const allMakes = [
-            ...new Set(
-              dbData.paints.map((paint: PaintData) => paint.make) // Access paints through dbData
-            ),
+            ...new Set(dbData.paints.map((paint: PaintData) => paint.make)),
           ].sort();
           setAllMakes(allMakes);
 
           const allYears = [
-            ...new Set(
-              dbData.paints.map((paint: PaintData) => paint.year) // Access paints through dbData
-            ),
+            ...new Set(dbData.paints.map((paint: PaintData) => paint.year)),
           ].sort();
           setYearSuggestions(allYears);
         }
@@ -347,6 +363,8 @@ const PaintDamageAnalyzer: React.FC = () => {
 
     loadData();
   }, []);
+
+
   const handleMakeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!paintData) return;
     const value = e.target.value;
@@ -354,6 +372,7 @@ const PaintDamageAnalyzer: React.FC = () => {
     const inputEvent = e.nativeEvent as InputEvent;
 
     if (value === "" || inputEvent.inputType === "deleteContentBackward") {
+      // Reset to all makes when input is cleared or backspaced
       const allMakesSet = new Set(paintData.paints.map((paint: PaintData) => paint.make));
       const allMakes = Array.from(allMakesSet).sort();
       setAllMakes(allMakes);
@@ -364,24 +383,25 @@ const PaintDamageAnalyzer: React.FC = () => {
           make.toLowerCase().startsWith(value.toLowerCase())
         )
         .sort();
-      setAllMakes(filteredMakes);
+      setAllMakes(filteredMakes); // Update allMakes with filtered suggestions
       setShowMakeSuggestions(true);
-      if (filteredMakes.length === 1) {
-        setFormData({
-          ...formData,
-          carMake: filteredMakes[0],
-          carModel: "",
-          carYear: "",
-        });
-        if (makeInputRef.current) {
-          // Blur the make input field
-          makeInputRef.current.blur();
+      // Auto-select and blur if only one suggestion matches *exactly*
+      if (filteredMakes.length === 1 && filteredMakes[0].toLowerCase() === value.toLowerCase()) {
+            setFormData({
+                ...formData,
+                carMake: filteredMakes[0],
+                carModel: "",
+                carYear: "",
+            });
+            if (makeInputRef.current) {
+                makeInputRef.current.blur();
+            }
+            setShowMakeSuggestions(false);
+            setAllMakes([]); // Clear suggestions after auto-selection
         }
-        setShowMakeSuggestions(false);
-        setAllMakes([]);
-      }
     }
   };
+
   const handleModelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!paintData) return;
     const value = e.target.value;
@@ -389,14 +409,15 @@ const PaintDamageAnalyzer: React.FC = () => {
     const inputEvent = e.nativeEvent as InputEvent;
 
     if (value === "" || inputEvent.inputType === "deleteContentBackward") {
-      const allModels = paintData.paints
-        .filter((paint: PaintData) => paint.make === formData.carMake)
-        .map((paint: PaintData) => paint.model)
-        .sort();
-      const uniqueModelsSet = new Set(allModels);
-      const uniqueModels = Array.from(uniqueModelsSet).sort();
-      setModelSuggestions(uniqueModels);
-      setShowModelSuggestions(true);
+        // If the model field is cleared, repopulate with models for the selected make
+        const allModels = paintData.paints
+          .filter((paint: PaintData) => paint.make === formData.carMake)
+          .map((paint: PaintData) => paint.model);
+        const uniqueModelsSet = new Set(allModels); // Ensure uniqueness
+        const uniqueModels = Array.from(uniqueModelsSet).sort();
+        setModelSuggestions(uniqueModels);
+        setShowModelSuggestions(true);
+
     } else {
       const filteredModels = modelSuggestions
         .filter((model) =>
@@ -405,7 +426,7 @@ const PaintDamageAnalyzer: React.FC = () => {
         .sort();
       setModelSuggestions(filteredModels);
       setShowModelSuggestions(true);
-      if (filteredModels.length === 1) {
+        if (filteredModels.length === 1 && filteredModels[0].toLowerCase() === value.toLowerCase()) {
         setFormData({ ...formData, carModel: filteredModels[0], carYear: "" });
         if (modelInputRef.current) {
           // Blur the model input field
@@ -416,30 +437,35 @@ const PaintDamageAnalyzer: React.FC = () => {
       }
     }
   };
+
   const handleYearChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!paintData) return;
     const value = e.target.value;
     setFormData({ ...formData, carYear: value });
     const inputEvent = e.nativeEvent as InputEvent;
+
     if (value === "" || inputEvent.inputType === "deleteContentBackward") {
-      const allYears = paintData.paints
-        .filter(
-          (paint: PaintData) =>
-            paint.make === formData.carMake && paint.model === formData.carModel
-        )
-        .map((paint: PaintData) => paint.year)
-        .sort();
-      const uniqueYearsSet = new Set(allYears);
-      const uniqueYears = Array.from(uniqueYearsSet).sort();
-      setYearSuggestions(uniqueYears);
-      setShowYearSuggestions(true);
+        // If the year field is cleared, repopulate with years for the selected make and model
+        const allYears = paintData.paints
+            .filter(
+            (paint: PaintData) =>
+                paint.make === formData.carMake && paint.model === formData.carModel
+            )
+            .map((paint: PaintData) => paint.year);
+
+        const uniqueYearsSet = new Set(allYears);  //Remove Duplicates
+        const uniqueYears = Array.from(uniqueYearsSet).sort();
+        setYearSuggestions(uniqueYears);
+        setShowYearSuggestions(true);
+
     } else {
+
       const filteredYears = yearSuggestions
         .filter((year) => year.startsWith(value))
         .sort();
       setYearSuggestions(filteredYears);
       setShowYearSuggestions(true);
-      if (filteredYears.length === 1) {
+        if (filteredYears.length === 1 && filteredYears[0] === value) {
         setFormData({ ...formData, carYear: filteredYears[0] });
         if (yearInputRef.current) {
           // Blur the year input field
@@ -450,114 +476,120 @@ const PaintDamageAnalyzer: React.FC = () => {
       }
     }
   };
+
   const handleMakeFocus = () => {
     if (!paintData) return;
-    const filteredMakes = allMakes
-      .filter((make: string) =>
-        make.toLowerCase().startsWith(formData.carMake.toLowerCase())
-      )
-      .sort();
-    setAllMakes(filteredMakes);
+    // When focusing on the make input, show all makes initially.
+    const allMakesSet = new Set(paintData.paints.map((paint: PaintData) => paint.make));
+    const initialMakes = Array.from(allMakesSet).sort();
+    setAllMakes(initialMakes);
     setShowMakeSuggestions(true);
+
+    // Reset model and year suggestions
     setModelSuggestions([]);
     setShowModelSuggestions(false);
     setYearSuggestions([]);
     setShowYearSuggestions(false);
   };
+
   const handleModelFocus = () => {
-    if (!paintData) return;
-    const allModels = paintData.paints
+    if (!paintData || !formData.carMake) return; // Need a make to suggest models
+
+    // When focusing, show models for the currently selected make.
+    const modelsForMake = paintData.paints
       .filter((paint: PaintData) => paint.make === formData.carMake)
-      .map((paint: PaintData) => paint.model)
-      .sort();
-    const uniqueModelsSet = new Set(allModels);
+      .map((paint: PaintData) => paint.model);
+    const uniqueModelsSet = new Set(modelsForMake);
     const uniqueModels = Array.from(uniqueModelsSet).sort();
-    const filteredModels = modelSuggestions
-      .filter((model) =>
-        model.toLowerCase().startsWith(formData.carModel.toLowerCase())
-      )
-      .sort();
-    setModelSuggestions(filteredModels);
+    setModelSuggestions(uniqueModels);
     setShowModelSuggestions(true);
+
+    // Reset year suggestions
     setYearSuggestions([]);
     setShowYearSuggestions(false);
   };
+
   const handleYearFocus = () => {
-    if (!paintData) return;
-    const allYears = paintData.paints
-      .filter(
-        (paint: PaintData) =>
-          paint.make === formData.carMake && paint.model === formData.carModel
-      )
-      .map((paint: PaintData) => paint.year)
-      .sort();
-    const uniqueYearsSet = new Set(allYears);
-    const uniqueYears = Array.from(uniqueYearsSet).sort();
-    const filteredYears = uniqueYears
-      .filter((year) => year.startsWith(formData.carYear))
-      .sort();
-    setYearSuggestions(filteredYears);
+    if (!paintData || !formData.carMake || !formData.carModel) return; // Need make and model
+
+    // When focusing, show years for the currently selected make and model.
+    const yearsForMakeAndModel = paintData.paints
+      .filter((paint: PaintData) => paint.make === formData.carMake && paint.model === formData.carModel)
+      .map((paint: PaintData) => paint.year);
+
+        const uniqueYearsSet = new Set(yearsForMakeAndModel);  //Remove Duplicates
+        const uniqueYears = Array.from(uniqueYearsSet).sort();
+    setYearSuggestions(uniqueYears);
     setShowYearSuggestions(true);
   };
+
   const selectMakeSuggestion = (suggestion: string) => {
     setFormData({
       ...formData,
       carMake: suggestion,
-      carModel: "",
+      carModel: "", // Clear model and year when a new make is selected
       carYear: "",
     });
     if (makeInputRef.current) {
-      // Blur the make input field
       makeInputRef.current.blur();
     }
     setShowMakeSuggestions(false);
-    setAllMakes([]);
-    if (!paintData) return;
-    const allModels = paintData.paints
-      .filter((paint: PaintData) => paint.make === suggestion)
-      .map((paint: PaintData) => paint.model)
-      .sort();
-    const uniqueModelsSet = new Set(allModels);
-    const uniqueModels = Array.from(uniqueModelsSet).sort();
-    setModelSuggestions(uniqueModels);
-    const allYearsSet = new Set(paintData.paints.map((paint: PaintData) => paint.year));
-    setYearSuggestions(Array.from(allYearsSet).sort());
+    setAllMakes([]); // Clear the suggestions
+
+    // Pre-populate model suggestions for the selected make
+    if (paintData) {
+      const modelsForMake = paintData.paints
+        .filter((paint: PaintData) => paint.make === suggestion)
+        .map((paint: PaintData) => paint.model);
+      const uniqueModelsSet = new Set(modelsForMake);
+      const uniqueModels = Array.from(uniqueModelsSet).sort()
+      setModelSuggestions(uniqueModels);
+
+       // Clear year suggestions
+      setYearSuggestions([]);
+    }
   };
+
   const selectModelSuggestion = (suggestion: string) => {
-    setFormData({ ...formData, carModel: suggestion, carYear: "" });
+    setFormData({ ...formData, carModel: suggestion, carYear: "" }); // Clear year
     if (modelInputRef.current) {
-      // Blur the model input field
       modelInputRef.current.blur();
     }
-    setModelSuggestions([]);
     setShowModelSuggestions(false);
-    if (!paintData) return;
-    const allYears = paintData.paints
-      .filter(
-        (paint: PaintData) =>
-          paint.make === formData.carMake && paint.model === suggestion
-      )
-      .map((paint: PaintData) => paint.year)
-      .sort();
-    const uniqueYearsSet = new Set(allYears);
-    const uniqueYears = Array.from(uniqueYearsSet).sort();
-    setYearSuggestions(uniqueYears);
+    setModelSuggestions([]); // Clear suggestions
+
+    // Pre-populate year suggestions for selected make and model
+    if(paintData) {
+        const yearsForMakeAndModel = paintData.paints
+        .filter(
+          (paint: PaintData) =>
+            paint.make === formData.carMake && paint.model === suggestion
+        )
+        .map((paint: PaintData) => paint.year);
+          const uniqueYearsSet = new Set(yearsForMakeAndModel);
+          const uniqueYears = Array.from(uniqueYearsSet).sort();
+          setYearSuggestions(uniqueYears);
+    }
   };
+
   const selectYearSuggestion = (suggestion: string) => {
     setFormData({ ...formData, carYear: suggestion });
     if (yearInputRef.current) {
-      // Blur the year input field
       yearInputRef.current.blur();
     }
-    setYearSuggestions([]);
     setShowYearSuggestions(false);
+    setYearSuggestions([]); // Clear suggestions
   };
+
+
   const handleMakeBlur = () => {
+    // Use a timeout to allow click events on suggestions to fire
     setTimeout(() => {
       setShowMakeSuggestions(false);
-      if (paintData) {
-        const allMakesSet = new Set(paintData.paints.map((paint: PaintData) => paint.make));
-        setAllMakes(Array.from(allMakesSet).sort());
+      //  setAllMakes([]); // Don't clear here, keep for filtering
+      // After blurring, if the input doesn't match a make exactly, clear it.
+      if (paintData && !paintData.paints.some(p => p.make.toLowerCase() === formData.carMake.toLowerCase())) {
+        setFormData(prev => ({ ...prev, carMake: "" }));
       }
     }, 150);
   };
@@ -565,18 +597,29 @@ const PaintDamageAnalyzer: React.FC = () => {
   const handleModelBlur = () => {
     setTimeout(() => {
       setShowModelSuggestions(false);
+      //setModelSuggestions([]); // Don't clear suggestions here
+      // After blurring, if the input doesn't match, clear.
+      if (paintData && formData.carMake && !paintData.paints.some(p => p.make.toLowerCase() === formData.carMake.toLowerCase() && p.model.toLowerCase() === formData.carModel.toLowerCase()))
+      {
+        setFormData(prev => ({ ...prev, carModel: "" }));
+      }
     }, 150);
   };
 
   const handleYearBlur = () => {
     setTimeout(() => {
       setShowYearSuggestions(false);
-      if (paintData) {
-        const allYearsSet = new Set(paintData.paints.map((paint: PaintData) => paint.year));
-        setYearSuggestions(Array.from(allYearsSet).sort());
+      //setYearSuggestions([]);  // Don't clear suggestions here.
+      // After blurring, if no match, clear the year.
+      if(paintData && formData.carMake && formData.carModel && !paintData.paints.some(p => p.make.toLowerCase() === formData.carMake.toLowerCase() && p.model.toLowerCase() === formData.carModel.toLowerCase() && p.year === formData.carYear))
+      {
+        setFormData(prev => ({...prev, carYear: ""}));
       }
     }, 150);
   };
+
+
+
   const renderStep = () => {
     switch (step) {
       case 1:
@@ -598,9 +641,9 @@ const PaintDamageAnalyzer: React.FC = () => {
                   onBlur={handleMakeBlur}
                 />
                 {showMakeSuggestions && allMakes.length > 0 && (
-                  <div>
+                  <div >
                     <ul className="absolute mt-1 w-full bg-white border rounded-md shadow-lg z-10 max-h-48 overflow-y-auto">
-                      {allMakes.map((suggestion:string) => (
+                      {allMakes.map((suggestion: string) => (
                         <li
                           key={suggestion}
                           className="p-2 hover:bg-gray-100 cursor-pointer"
@@ -627,7 +670,7 @@ const PaintDamageAnalyzer: React.FC = () => {
                 {showModelSuggestions && modelSuggestions.length > 0 && (
                   <div>
                     <ul className="absolute mt-1 w-full bg-white border rounded-md shadow-lg z-10 max-h-48 overflow-y-auto">
-                      {modelSuggestions.map((suggestion:string) => (
+                      {modelSuggestions.map((suggestion: string) => (
                         <li
                           key={suggestion}
                           className="p-2 hover:bg-gray-100 cursor-pointer"
@@ -654,7 +697,7 @@ const PaintDamageAnalyzer: React.FC = () => {
                 {showYearSuggestions && yearSuggestions.length > 0 && (
                   <div>
                     <ul className="absolute mt-1 w-full bg-white border rounded-md shadow-lg z-10 max-h-48 overflow-y-auto">
-                      {yearSuggestions.map((suggestion:string) => (
+                      {yearSuggestions.map((suggestion: string) => (
                         <li
                           key={suggestion}
                           className="p-2 hover:bg-gray-100 cursor-pointer"
@@ -671,6 +714,7 @@ const PaintDamageAnalyzer: React.FC = () => {
             <button
               className="w-full p-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
               onClick={() => setStep(2)}
+              disabled={!formData.carMake || !formData.carModel || !formData.carYear}
             >
               <ChevronRight className="w-5 h-5" />
               Continue
@@ -692,11 +736,10 @@ const PaintDamageAnalyzer: React.FC = () => {
                   {["Garage", "Covered", "Uncovered", "Street"].map((type) => (
                     <button
                       key={type}
-                      className={`p-4 rounded-lg border-2 transition-all ${
-                        formData.parkingType === type.toLowerCase()
-                          ? "border-blue-600 bg-blue-50"
-                          : "border-gray-200 hover:border-blue-300"
-                      }`}
+                      className={`p-4 rounded-lg border-2 transition-all ${formData.parkingType === type.toLowerCase()
+                        ? "border-blue-600 bg-blue-50"
+                        : "border-gray-200 hover:border-blue-300"
+                        }`}
                       onClick={() =>
                         setFormData({
                           ...formData,
@@ -717,11 +760,10 @@ const PaintDamageAnalyzer: React.FC = () => {
                   {["Rarely", "Monthly", "Weekly"].map((frequency) => (
                     <button
                       key={frequency}
-                      className={`p-4 rounded-lg border-2 transition-all ${
-                        formData.washFrequency === frequency.toLowerCase()
-                          ? "border-blue-600 bg-blue-50"
-                          : "border-gray-200 hover:border-blue-300"
-                      }`}
+                      className={`p-4 rounded-lg border-2 transition-all ${formData.washFrequency === frequency.toLowerCase()
+                        ? "border-blue-600 bg-blue-50"
+                        : "border-gray-200 hover:border-blue-300"
+                        }`}
                       onClick={() =>
                         setFormData({
                           ...formData,
@@ -738,6 +780,7 @@ const PaintDamageAnalyzer: React.FC = () => {
             <button
               className="w-full p-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               onClick={() => setStep(3)}
+              disabled={!formData.parkingType || !formData.washFrequency}
             >
               Continue
             </button>
@@ -755,11 +798,10 @@ const PaintDamageAnalyzer: React.FC = () => {
                 {damageTypes.map(({ id, label, icon: Icon }) => (
                   <button
                     key={id}
-                    className={`p-4 rounded-lg border-2 transition-all flex items-center gap-2 ${
-                      formData.currentDamage.includes(id)
-                        ? "border-blue-600 bg-blue-50"
-                        : "border-gray-200 hover:border-blue-300"
-                    }`}
+                    className={`p-4 rounded-lg border-2 transition-all flex items-center gap-2 ${formData.currentDamage.includes(id)
+                      ? "border-blue-600 bg-blue-50"
+                      : "border-gray-200 hover:border-blue-300"
+                      }`}
                     onClick={() => {
                       const newDamage = formData.currentDamage.includes(id)
                         ? formData.currentDamage.filter((d) => d !== id)
@@ -776,6 +818,7 @@ const PaintDamageAnalyzer: React.FC = () => {
             <button
               className="w-full p-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
               onClick={calculateRiskScore}
+              disabled={formData.currentDamage.length === 0}
             >
               <Zap className="w-5 h-5" />
               Generate Risk Report
