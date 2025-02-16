@@ -321,26 +321,30 @@ const PaintDamageAnalyzer: React.FC = () => {
     const loadData = async () => {
       try {
         const module = await import("./db.json");
-
+  
         if (module.default) {
           const dbData = module.default as Db;
           setPaintData(dbData);
-
-          const allMakes = Array.from(new Set(
+  
+          const allMakes = [
+            ...new Set(
               module.default.paints.map((paint: PaintData) => paint.make)
-            )).sort();
+            ),
+          ].sort();
           setAllMakes(allMakes);
-
-          const allYears = Array.from(new Set(
+  
+          const allYears = [
+            ...new Set(
               module.default.paints.map((paint: PaintData) => paint.year)
-            )).sort();
+            ),
+          ].sort();
           setYearSuggestions(allYears);
         }
       } catch (error) {
         console.error("Error loading db.json: ", error);
       }
     };
-
+  
     loadData();
   }, []);
   const handleMakeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
